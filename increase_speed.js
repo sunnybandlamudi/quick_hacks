@@ -108,6 +108,5 @@ function init() {
     dragElement(container)
 
     document.body.appendChild(container)
-    
 
 }
