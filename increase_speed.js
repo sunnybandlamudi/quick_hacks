@@ -29,31 +29,85 @@ function init() {
       pos4 = e.clientY;
       elmnt.style.top = elmnt.offsetTop - pos2 + "px";
       elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
+      elmnt.style.right = 'unset'
     }
     function closeDragElement() {
       /* stop moving when mouse button is released:*/ document.onmouseup = null;
       document.onmousemove = null;
     }
   }
-  var button = document.createElement("Button");
-  button.innerHTML = "Button";
-  button.style = `
-  position: absolute; 
-  z-index: 9; 
-  top:50%; right:0; 
-  background-color: #f1f1f1; 
-  cursor: move; 
-  text-align: center; 
-  border: 1px solid #d3d3d3; 
-  width:50px; height:50px; }`;
-  document.body.appendChild(button);
 
-  dragElement(button);
+//   var button = document.createElement("Button");
+//   button.innerHTML = "Button";
+//   button.style = `
+//   position: absolute; 
+//   z-index: 9; 
+//   top:50%; right:0; 
+//   background-color: #f1f1f1; 
+//   cursor: move; 
+//   text-align: center; 
+//   border: 1px solid #d3d3d3; 
+//   width:50px; height:50px; }`;
+//   document.body.appendChild(button);
 
-  button.addEventListener("click", function () {
+//   dragElement(button);
+
+//   button.addEventListener("click", function () {
+//     video = document.getElementsByTagName("video")[0];
+//     // video.playbackRate = video.playbackRate + 0.5;
+//     video.playbackRate = 3;
+//     alert("Hello World!");
+//   });
+
+
+    let floatStyle = `
+    position: absolute; 
+    z-index: 9; 
+    top:50%; 
+    right:0;
+    cursor: move; 
+    text-align: center; 
+    display:flex; }`
+
+    var styleButton=`
+    background:grey;
+    width:40px;
+    height:40px;
+    font-size:1.5rem;
+    background:rgb(0 0 0 / 10%);
+    border-radius:35%;
+    `;
+
+    let container = document.createElement("div");
+    let increase = document.createElement("button");
+    let decrease = document.createElement("button");
+
+    increase.style = styleButton;
+    decrease.style = styleButton;
+    container.style = floatStyle;
+
+    increase.innerHTML = "+";
+    decrease.innerHTML = "-";
+    container.appendChild(increase);
+    container.appendChild(decrease);
+    // container.innerHTML="Text"
+
+    increase.addEventListener('click',()=>{
     video = document.getElementsByTagName("video")[0];
-    // video.playbackRate = video.playbackRate + 0.5;
-    video.playbackRate = 3;
-    alert("Hello World!");
-  });
+        video.playbackRate = video.playbackRate + 0.5;
+        // video.playbackRate = 3;
+    })
+
+    decrease.addEventListener('click',()=>{
+    video = document.getElementsByTagName("video")[0];
+        video.playbackRate = video.playbackRate - 0.5;
+        // video.playbackRate = 3;
+    })
+
+
+    dragElement(container)
+
+    document.body.appendChild(container)
+    
+
 }
