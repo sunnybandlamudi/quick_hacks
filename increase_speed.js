@@ -10,6 +10,7 @@ function init() {
     // } else {
       /* otherwise, move the DIV from anywhere inside the DIV:*/ 
       elmnt.onmousedown = dragMouseDown;
+      elmnt.onpointerdown = dragMouseDown;
     // }
     function dragMouseDown(e) {
       e = e || window.event;
@@ -17,7 +18,10 @@ function init() {
       pos3 = e.clientX;
       pos4 = e.clientY;
       document.onmouseup = closeDragElement;
+      document.onpointerup = closeDragElement;
+
       document.onmousemove = elementDrag;
+      document.onpointermove = elementDrag;
     }
     function elementDrag(e) {
       e = e || window.event;
@@ -33,6 +37,7 @@ function init() {
     function closeDragElement() {
       /* stop moving when mouse button is released:*/ document.onmouseup = null;
       document.onmousemove = null;
+      document.onpointermove = null;
     }
   }
 
@@ -59,9 +64,9 @@ function init() {
   //   });
 
   let floatStyle = `
-    position: absolute; 
+    position: fixed; 
     z-index: 1000; 
-    top:50vh; 
+    top:50%; 
     right:0;
     cursor: move; 
     text-align: center; 
