@@ -13,16 +13,16 @@ function init() {
       elmnt.addEventListener('touchmove', function(e) {
         // grab the location of touch
         var touchLocation = e.targetTouches[0];
-        console.log(e)
+        console.log(touchLocation)
         x_cord = 0;
         y_cord = 0;
         console.log(touchLocation.pageX,window.screen.width)
         console.log(touchLocation.pageY,window.screen.height)
         if(touchLocation.pageX >= 0 && touchLocation.pageX <= window.screen.width){
-            x_cord = touchLocation.pageX;
+            x_cord = touchLocation.clientX;
         }
         if(touchLocation.pageY >= 0 && touchLocation.pageY <= window.screen.height){
-            y_cord = touchLocation.pageY;
+            y_cord = touchLocation.clientY;
         }
         // assign elmnt new coordinates based on the touch.
         elmnt.style.left = x_cord + 'px';
