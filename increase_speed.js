@@ -19,8 +19,8 @@ function init() {
           console.log(touchLocation.pageX,window.screen.width)
           console.log(touchLocation.pageY,window.screen.height)
           
-          if (touchLocation.clientX > window.screen.width){
-              x_cord = window.screen.width-50;
+          if (touchLocation.clientX > window.screen.width-50){
+              x_cord = 0;
           }
           else if(touchLocation.clientX < 0 ){
               x_cord = 0;
@@ -29,8 +29,8 @@ function init() {
               x_cord = touchLocation.clientX;
           }
   
-          if(touchLocation.clientY > window.screen.height){
-              y_cord = window.screen.height-50;
+          if(touchLocation.clientY > window.screen.height-100){
+              y_cord = 0;
           }
           else if(touchLocation.clientY < 0 ){
               y_cord = 0;
