@@ -1,5 +1,20 @@
 function init() {
     let playbackRate = 1;
+
+    let observer =new MutationObserver(function(mutations) {
+        console.log(mutations.length)
+        mutations.forEach(function(mutation) {
+          if (mutation.type === "attributes" && mutation.attributeName == "src") {
+            video = mutation.target;
+            setTimeout(()=>{
+                video.playbackRate = playbackRate;
+            },500)
+            
+            console.log("attributes changed")
+          }
+        });
+      });
+
     function dragElement(elmnt) {
       var pos1 = 0,
         pos2 = 0,
@@ -116,6 +131,15 @@ function init() {
 
     }
 
+
+
+    function addObservers(video){
+        // observer.disconnect();
+        setTimeout(()=>{
+            observer.observe(video,{attributes:true})
+        },500);
+    }
+
     let floatStyle = `
       position: fixed; 
       z-index: 1000; 
@@ -155,6 +179,7 @@ function init() {
       }
       video.playbackRate = video.playbackRate + 0.5;
       playbackRate = video.playbackRate;
+      addObservers(video)
       // video.playbackRate = 3;
     });
   
@@ -165,12 +190,14 @@ function init() {
       }
       video.playbackRate = video.playbackRate - 0.5;
       playbackRate = video.playbackRate;
+      addObservers(video)
       // video.playbackRate = 3;
     });
   
     dragElement(container);
   
-    setInterval(setPlayBackRate,3000);
+    // setInterval(setPlayBackRate,3000);
+
     document.body.appendChild(container);
   }
   
