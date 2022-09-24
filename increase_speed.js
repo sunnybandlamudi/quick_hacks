@@ -13,10 +13,19 @@ function init() {
       elmnt.addEventListener('touchmove', function(e) {
         // grab the location of touch
         var touchLocation = e.targetTouches[0];
-        
+        x_cord = 0;
+        y_cord = 0;
+        console.log(touchLocation.pageX,window.screen.width)
+        console.log(touchLocation.pageY,window.screen.height)
+        if(touchLocation.pageX >= 0 && touchLocation.pageX <= window.screen.width){
+            x_cord = touchLocation.pageX;
+        }
+        if(touchLocation.pageY >= 0 && touchLocation.pageY <= window.screen.height){
+            y_cord = touchLocation.pageY;
+        }
         // assign elmnt new coordinates based on the touch.
-        elmnt.style.left = touchLocation.pageX + 'px';
-        elmnt.style.top = touchLocation.pageY + 'px';
+        elmnt.style.left = x_cord + 'px';
+        elmnt.style.top = y_cord + 'px';
       })
       
       /* record the position of the touch
@@ -89,7 +98,6 @@ function init() {
     display:flex; }`;
 
   var styleButton = `
-    background:grey;
     width:40px;
     height:40px;
     color:white;
