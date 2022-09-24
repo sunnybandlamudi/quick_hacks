@@ -7,8 +7,12 @@ function init() {
           if (mutation.type === "attributes" && mutation.attributeName == "src") {
             video = mutation.target;
             setTimeout(()=>{
+                video = document.getElementsByTagName("video")[0];
+                if (video == null) {
+                    return;
+                }
                 video.playbackRate = playbackRate;
-            },500)
+            },2000)
             
             console.log("attributes changed")
           }
@@ -134,7 +138,7 @@ function init() {
 
 
     function addObservers(video){
-        // observer.disconnect();
+        observer.disconnect();
         setTimeout(()=>{
             observer.observe(video,{attributes:true})
         },500);
@@ -179,7 +183,7 @@ function init() {
       }
       video.playbackRate = video.playbackRate + 0.5;
       playbackRate = video.playbackRate;
-      addObservers(video)
+    //   addObservers(video)
       // video.playbackRate = 3;
     });
   
@@ -190,13 +194,13 @@ function init() {
       }
       video.playbackRate = video.playbackRate - 0.5;
       playbackRate = video.playbackRate;
-      addObservers(video)
+    //   addObservers(video)
       // video.playbackRate = 3;
     });
   
     dragElement(container);
   
-    // setInterval(setPlayBackRate,3000);
+    setInterval(setPlayBackRate,3000);
 
     document.body.appendChild(container);
   }
