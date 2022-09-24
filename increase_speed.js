@@ -89,7 +89,7 @@ function init() {
   //   });
 
   let floatStyle = `
-    position: fixed; 
+    position: absolute; 
     z-index: 1000; 
     top:50%; 
     right:0;
