@@ -20,9 +20,9 @@ function init() {
         if(touchLocation.pageX >= 0 && touchLocation.pageX <= window.screen.width){
             x_cord = touchLocation.pageX;
         }
-       // if(touchLocation.pageY >= 0 && touchLocation.pageY <= window.screen.height){
-       //     y_cord = touchLocation.pageY;
-        //}
+       if(touchLocation.pageY >= 0 || touchLocation.pageY <= window.screen.height){
+           y_cord = touchLocation.pageY;
+        }
         // assign elmnt new coordinates based on the touch.
         elmnt.style.left = x_cord + 'px';
         elmnt.style.top = y_cord + 'px';
