@@ -130,7 +130,9 @@ function init() {
         if (video == null) {
         return;
         }
-        video.playbackRate = playbackRate;
+        if(video.playbackRate != playbackRate){
+            video.playbackRate = playbackRate;
+        }
         console.log("Playback rate",playbackRate)
 
     }
