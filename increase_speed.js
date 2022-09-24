@@ -1,4 +1,5 @@
 function init() {
+    let playbackRate = 1;
     function dragElement(elmnt) {
       var pos1 = 0,
         pos2 = 0,
@@ -105,6 +106,16 @@ function init() {
     //     alert("Hello World!");
     //   });
   
+    function setPlayBackRate(){
+        video = document.getElementsByTagName("video")[0];
+        if (video == null) {
+        return;
+        }
+        video.playbackRate = playbackRate;
+        console.log("Playback rate",playbackRate)
+
+    }
+
     let floatStyle = `
       position: fixed; 
       z-index: 1000; 
@@ -143,6 +154,7 @@ function init() {
         return;
       }
       video.playbackRate = video.playbackRate + 0.5;
+      playbackRate = video.playbackRate;
       // video.playbackRate = 3;
     });
   
@@ -152,11 +164,13 @@ function init() {
         return;
       }
       video.playbackRate = video.playbackRate - 0.5;
+      playbackRate = video.playbackRate;
       // video.playbackRate = 3;
     });
   
     dragElement(container);
   
+    setInterval(setPlayBackRate,3000);
     document.body.appendChild(container);
   }
   
