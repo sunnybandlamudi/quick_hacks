@@ -29,7 +29,7 @@ function init() {
               x_cord = touchLocation.clientX;
           }
   
-          if(touchLocation.clientY > window.screen.height-100){
+          if(touchLocation.clientY > window.screen.height-200){
               y_cord = 0;
           }
           else if(touchLocation.clientY < 0 ){
