@@ -1,4 +1,4 @@
-javascript:(function() {
+function init() {
     // Check if controls already exist
     if (document.getElementById('videoSpeedControls')) return;
 
@@ -141,4 +141,4 @@ javascript:(function() {
     controls.addEventListener('touchstart', e => startDrag(e.touches[0].clientX, e.touches[0].clientY));
     document.addEventListener('touchmove', e => drag(e.touches[0].clientX, e.touches[0].clientY));
     document.addEventListener('touchend', endDrag);
-})();
+}
